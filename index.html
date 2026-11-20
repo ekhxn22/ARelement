@@ -192,88 +192,91 @@
     renderer="logarithmicDepthBuffer: true; antialias: true;">
 
     <a-marker preset="hiro" id="hintMarker" smooth="true" smoothCount="5" smoothTolerance="0.01" smoothThreshold="2">
-      <a-entity id="hintNotebook" position="0 0.35 0" scale="0.7 0.7 0.7"
-                animation="property: position; to: 0 0.45 0; dir: alternate; dur: 1800; loop: true; easing: easeInOutSine">
+      <!-- Wider, well-spaced 3D Hint Notebook Assembly -->
+      <a-entity id="hintNotebook" position="0 0.36 0" scale="0.78 0.78 0.78"
+                animation="property: position; to: 0 0.46 0; dir: alternate; dur: 1800; loop: true; easing: easeInOutSine">
         <!-- Notebook Cover Base -->
-        <a-box position="0 0 0" width="2.55" height="0.1" depth="1.78" color="#B45309" material="roughness: 0.55"></a-box>
+        <a-box position="0 0 0" width="2.95" height="0.1" depth="2.02" color="#B45309" material="roughness: 0.55"></a-box>
+
         <!-- Corner Gold Accents -->
-        <a-box position="-1.22 0.01 -0.84" width="0.14" height="0.12" depth="0.14" color="#FBBF24"></a-box>
-        <a-box position="1.22 0.01 -0.84" width="0.14" height="0.12" depth="0.14" color="#FBBF24"></a-box>
-        <a-box position="-1.22 0.01 0.84" width="0.14" height="0.12" depth="0.14" color="#FBBF24"></a-box>
-        <a-box position="1.22 0.01 0.84" width="0.14" height="0.12" depth="0.14" color="#FBBF24"></a-box>
+        <a-box position="-1.42 0.01 -0.96" width="0.15" height="0.12" depth="0.15" color="#FBBF24"></a-box>
+        <a-box position="1.42 0.01 -0.96" width="0.15" height="0.12" depth="0.15" color="#FBBF24"></a-box>
+        <a-box position="-1.42 0.01 0.96" width="0.15" height="0.12" depth="0.15" color="#FBBF24"></a-box>
+        <a-box position="1.42 0.01 0.96" width="0.15" height="0.12" depth="0.15" color="#FBBF24"></a-box>
 
-        <!-- Left & Right Open Pages -->
-        <a-box position="-0.61 0.09 0" width="1.15" height="0.1" depth="1.6" rotation="0 0 -3" color="#FFFDF7" material="roughness: 0.85"></a-box>
-        <a-box position="0.61 0.09 0" width="1.15" height="0.1" depth="1.6" rotation="0 0 3" color="#FFFDF7" material="roughness: 0.85"></a-box>
+        <!-- Left & Right Open Pages with breathing room from spine -->
+        <a-box position="-0.74 0.09 0" width="1.32" height="0.1" depth="1.82" rotation="0 0 -2.5" color="#FFFDF7" material="roughness: 0.85"></a-box>
+        <a-box position="0.74 0.09 0" width="1.32" height="0.1" depth="1.82" rotation="0 0 2.5" color="#FFFDF7" material="roughness: 0.85"></a-box>
 
-        <!-- Subtle Ruled Lines Across Both Pages -->
-        <a-box position="-0.61 0.145 -0.45" width="0.92" height="0.006" depth="0.018" rotation="0 0 -3" color="#CBD5E1"></a-box>
-        <a-box position="-0.61 0.145 -0.15" width="0.92" height="0.006" depth="0.018" rotation="0 0 -3" color="#CBD5E1"></a-box>
-        <a-box position="-0.61 0.145 0.15" width="0.92" height="0.006" depth="0.018" rotation="0 0 -3" color="#CBD5E1"></a-box>
-        <a-box position="-0.61 0.145 0.45" width="0.92" height="0.006" depth="0.018" rotation="0 0 -3" color="#CBD5E1"></a-box>
+        <!-- Evenly Spaced Ruled Lines Across Left Page -->
+        <a-box position="-0.74 0.146 -0.62" width="1.06" height="0.006" depth="0.018" rotation="0 0 -2.5" color="#CBD5E1"></a-box>
+        <a-box position="-0.74 0.146 -0.22" width="1.06" height="0.006" depth="0.018" rotation="0 0 -2.5" color="#CBD5E1"></a-box>
+        <a-box position="-0.74 0.146 0.18" width="1.06" height="0.006" depth="0.018" rotation="0 0 -2.5" color="#CBD5E1"></a-box>
+        <a-box position="-0.74 0.146 0.58" width="1.06" height="0.006" depth="0.018" rotation="0 0 -2.5" color="#CBD5E1"></a-box>
 
-        <a-box position="0.61 0.145 -0.45" width="0.92" height="0.006" depth="0.018" rotation="0 0 3" color="#CBD5E1"></a-box>
-        <a-box position="0.61 0.145 -0.15" width="0.92" height="0.006" depth="0.018" rotation="0 0 3" color="#CBD5E1"></a-box>
-        <a-box position="0.61 0.145 0.15" width="0.92" height="0.006" depth="0.018" rotation="0 0 3" color="#CBD5E1"></a-box>
-        <a-box position="0.61 0.145 0.45" width="0.92" height="0.006" depth="0.018" rotation="0 0 3" color="#CBD5E1"></a-box>
+        <!-- Evenly Spaced Ruled Lines Across Right Page -->
+        <a-box position="0.74 0.146 -0.62" width="1.06" height="0.006" depth="0.018" rotation="0 0 2.5" color="#CBD5E1"></a-box>
+        <a-box position="0.74 0.146 -0.22" width="1.06" height="0.006" depth="0.018" rotation="0 0 2.5" color="#CBD5E1"></a-box>
+        <a-box position="0.74 0.146 0.18" width="1.06" height="0.006" depth="0.018" rotation="0 0 2.5" color="#CBD5E1"></a-box>
+        <a-box position="0.74 0.146 0.58" width="1.06" height="0.006" depth="0.018" rotation="0 0 2.5" color="#CBD5E1"></a-box>
 
         <!-- Center Spine Crease & Bookmark Ribbon -->
-        <a-box position="0 0.07 0" width="0.12" height="0.13" depth="1.64" color="#78350F"></a-box>
-        <a-box position="0.22 0.16 0.12" width="0.1" height="0.02" depth="1.66" rotation="0 0 2" color="#EF4444"></a-box>
+        <a-box position="0 0.07 0" width="0.14" height="0.13" depth="1.86" color="#78350F"></a-box>
+        <a-box position="0.16 0.16 0.14" width="0.1" height="0.02" depth="1.88" rotation="0 0 2" color="#EF4444"></a-box>
 
-        <!-- Left Page Diagram -->
-        <a-entity id="leftPageVisual" position="-0.61 0.22 -0.05" rotation="-90 0 0">
-          <a-ring id="atomRing" color="#38BDF8" radius-inner="0.22" radius-outer="0.26"></a-ring>
-          <a-ring id="atomOrbit" color="#38BDF8" radius-inner="0.12" radius-outer="0.14" position="0 0 0.005"></a-ring>
-          <a-circle id="nucleusDot" color="#F59E0B" radius="0.07" position="0 0 0.01"></a-circle>
-          <a-text id="leftSymbol" value="O=8 C=6" position="0 -0.36 0.01" align="center" color="#0F172A" width="1.35"></a-text>
+        <!-- Left Page Diagram: Atom Sketch + Spaced Symbol Label -->
+        <a-entity id="leftPageVisual" position="-0.74 0.24 -0.14" rotation="-90 0 0">
+          <a-ring id="atomRing" color="#38BDF8" radius-inner="0.24" radius-outer="0.28"></a-ring>
+          <a-ring id="atomOrbit" color="#38BDF8" radius-inner="0.13" radius-outer="0.155" position="0 0 0.005"></a-ring>
+          <a-circle id="nucleusDot" color="#F59E0B" radius="0.075" position="0 0 0.01"></a-circle>
+          <a-text id="leftSymbol" value="O=8 C=6" position="0 -0.44 0.01" align="center" color="#0F172A" width="1.45"></a-text>
         </a-entity>
 
-        <!-- Right Page Prop -->
-        <a-entity id="rightPageVisual" position="0.61 0.22 -0.38" rotation="-90 0 0">
-          <a-circle id="pageFlaskBase" color="#38BDF8" radius="0.18" position="0 0.06 0.01"></a-circle>
-          <a-ring id="pageFlaskRim" color="#64748B" radius-inner="0.18" radius-outer="0.21" position="0 0.06 0.015"></a-ring>
-          <a-text id="rightTag" value="8-6-1" position="0 -0.22 0.01" align="center" color="#B45309" width="1.25"></a-text>
+        <!-- Right Page Prop: Beaker / Flask + Spaced Code Tag -->
+        <a-entity id="rightPageVisual" position="0.74 0.24 -0.46" rotation="-90 0 0">
+          <a-circle id="pageFlaskBase" color="#38BDF8" radius="0.19" position="0 0.08 0.01"></a-circle>
+          <a-ring id="pageFlaskRim" color="#64748B" radius-inner="0.19" radius-outer="0.22" position="0 0.08 0.015"></a-ring>
+          <a-text id="rightTag" value="8-6-1" position="0 -0.24 0.01" align="center" color="#B45309" width="1.35"></a-text>
         </a-entity>
 
-        <!-- Floating Lab Orbs Beside Notebook -->
-        <a-sphere position="-1.42 0.26 -0.45" radius="0.13" color="#38BDF8"
-                  animation="property: position; to: -1.42 0.38 -0.45; dir: alternate; dur: 1400; loop: true"></a-sphere>
-        <a-sphere position="1.42 0.26 0.45" radius="0.12" color="#10B981"
-                  animation="property: position; to: 1.42 0.38 0.45; dir: alternate; dur: 1700; loop: true"></a-sphere>
+        <!-- Floating Lab Orbs Further Out From Notebook Edges -->
+        <a-sphere position="-1.68 0.28 -0.52" radius="0.13" color="#38BDF8"
+                  animation="property: position; to: -1.68 0.40 -0.52; dir: alternate; dur: 1400; loop: true"></a-sphere>
+        <a-sphere position="1.68 0.28 0.52" radius="0.12" color="#10B981"
+                  animation="property: position; to: 1.68 0.40 0.52; dir: alternate; dur: 1700; loop: true"></a-sphere>
 
         <!-- Floating AR Title -->
         <a-text
           id="arTitle"
           value="PUZZLE 1: THE PERIODIC LOCK"
-          position="0 0.30 -0.62"
+          position="0 0.34 -0.78"
           rotation="-90 0 0"
           align="center"
           color="#B45309"
-          width="2.2">
+          width="2.5">
         </a-text>
 
-        <!-- Floating AR Clue Body -->
+        <!-- Floating AR Clue Body on Right Page -->
         <a-text
           id="arBody"
           value="Look closely at the lab wall chart! Find Oxygen (O) and Carbon (C)."
-          position="0.61 0.28 0.22"
+          position="0.74 0.31 0.26"
           rotation="-90 0 0"
           align="center"
           color="#1E293B"
-          width="1.05"
-          wrap-count="22">
+          width="1.15"
+          wrap-count="24">
         </a-text>
 
         <!-- Stage Badge -->
         <a-text
           id="arBadge"
           value="[ GENTLE NUDGE (1/3) ]"
-          position="0 0.30 0.66"
+          position="0 0.34 0.78"
           rotation="-90 0 0"
           align="center"
           color="#0284C7"
-          width="1.95">
+          width="2.15">
         </a-text>
       </a-entity>
     </a-marker>
