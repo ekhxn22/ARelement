@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-  <title>Dr. Skienst: Book of Hints (WebAR)</title>
-  <!-- A-Frame & AR.js for Marker-Based WebAR -->
+  <title>Dr. Skientist: Book of Hints (WebAR)</title>
   <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700&display=swap" rel="stylesheet">
@@ -17,14 +16,15 @@
       color: #2d2638;
     }
 
-    /* Keep AR scene & webcam behind HUD */
-    a-scene,
-    .a-canvas,
-    video {
-      z-index: 1 !important;
+    /* Layering: webcam video (0) -> A-Frame canvas (2) -> HUD (9999) */
+    canvas.a-canvas {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      z-index: 2 !important;
+      pointer-events: none;
     }
 
-    /* Top Lab HUD */
     .hud-header {
       position: fixed;
       top: 14px;
@@ -67,7 +67,6 @@
     }
     .mode-btn:active { transform: translateY(2px); }
 
-    /* Bottom Interactive Hint Controls */
     .hud-controls {
       position: fixed;
       bottom: 18px;
@@ -157,7 +156,6 @@
       max-width: 120px;
     }
 
-    /* Scanning Guide Pill */
     .scan-pill {
       position: fixed;
       top: 84px;
@@ -177,10 +175,9 @@
 </head>
 <body>
 
-  <!-- Top HUD -->
   <div class="hud-header">
     <div>
-      <div class="hud-title">Dr. Skienst's Hint Codex</div>
+      <div class="hud-title">Dr. Skientist's Hint Codex</div>
       <div class="hud-sub" id="statusText">Point camera at Book Marker</div>
     </div>
     <button type="button" class="mode-btn" id="togglePreviewBtn">2D Card Mode</button>
@@ -188,18 +185,15 @@
 
   <div class="scan-pill" id="scanPill">Aim at the HIRO marker in the Book of Hints</div>
 
-  <!-- AR Scene -->
   <a-scene
     id="arScene"
-    embedded
     arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono;"
     vr-mode-ui="enabled: false"
     renderer="logarithmicDepthBuffer: true; antialias: true;">
 
     <a-marker preset="hiro" id="hintMarker" smooth="true" smoothCount="5" smoothTolerance="0.01" smoothThreshold="2">
-      <!-- 3D Hint Notebook Assembly -->
-      <a-entity id="hintNotebook" position="0 0.25 0" scale="0.85 0.85 0.85"
-                animation="property: position; to: 0 0.35 0; dir: alternate; dur: 1800; loop: true; easing: easeInOutSine">
+      <a-entity id="hintNotebook" position="0 0.35 0" scale="0.7 0.7 0.7"
+                animation="property: position; to: 0 0.45 0; dir: alternate; dur: 1800; loop: true; easing: easeInOutSine">
         <!-- Notebook Cover Base -->
         <a-box position="0 0 0" width="2.55" height="0.1" depth="1.78" color="#B45309" material="roughness: 0.55"></a-box>
         <!-- Corner Gold Accents -->
@@ -227,7 +221,7 @@
         <a-box position="0 0.07 0" width="0.12" height="0.13" depth="1.64" color="#78350F"></a-box>
         <a-box position="0.22 0.16 0.12" width="0.1" height="0.02" depth="1.66" rotation="0 0 2" color="#EF4444"></a-box>
 
-        <!-- Left Page Diagram: Atom / Lab Sketch + Badge -->
+        <!-- Left Page Diagram -->
         <a-entity id="leftPageVisual" position="-0.61 0.22 -0.05" rotation="-90 0 0">
           <a-ring id="atomRing" color="#38BDF8" radius-inner="0.22" radius-outer="0.26"></a-ring>
           <a-ring id="atomOrbit" color="#38BDF8" radius-inner="0.12" radius-outer="0.14" position="0 0 0.005"></a-ring>
@@ -235,7 +229,7 @@
           <a-text id="leftSymbol" value="O=8 C=6" position="0 -0.36 0.01" align="center" color="#0F172A" width="1.35"></a-text>
         </a-entity>
 
-        <!-- Right Page Prop: Beaker / Flask + Code Tag -->
+        <!-- Right Page Prop -->
         <a-entity id="rightPageVisual" position="0.61 0.22 -0.38" rotation="-90 0 0">
           <a-circle id="pageFlaskBase" color="#38BDF8" radius="0.18" position="0 0.06 0.01"></a-circle>
           <a-ring id="pageFlaskRim" color="#64748B" radius-inner="0.18" radius-outer="0.21" position="0 0.06 0.015"></a-ring>
@@ -287,7 +281,6 @@
     <a-entity camera></a-entity>
   </a-scene>
 
-  <!-- Bottom Interactive HUD -->
   <div class="hud-controls">
     <div class="puzzle-tabs">
       <button type="button" class="tab-btn active" data-puzzle="0">1. Periodic Lock</button>
@@ -436,12 +429,12 @@
         previewOnly = !previewOnly;
         const scene = document.getElementById('arScene');
         if (previewOnly) {
-          scene.style.display = 'none';
+          if (scene) scene.style.display = 'none';
           togglePreviewBtn.textContent = 'AR Camera Mode';
           statusText.textContent = '2D Quick-Test Mode';
           scanPill.textContent = 'Camera paused — testing hint cards';
         } else {
-          scene.style.display = 'block';
+          if (scene) scene.style.display = 'block';
           togglePreviewBtn.textContent = '2D Card Mode';
           statusText.textContent = 'Point camera at Book Marker';
           scanPill.textContent = 'Aim at the HIRO marker in the Book of Hints';
